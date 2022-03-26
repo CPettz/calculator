@@ -24,42 +24,45 @@
     <main class="main">
         <div class="calcBody">
             <div class="display">
-                <div class="displayContent">0</div>
+                <div class="displayContent" id="displayContentId">0</div>
             </div>
             
             <div class="clearDelete">
-                <button class="clearBtn">CLEAR</button>
-                <button class="deleteBtn">DELETE</button>
+                <button class="clearBtn" id="clearBtnId">CLEAR</button>
+                <button class="deleteBtn" id="deleteBtnId">DELETE</button>
             </div>
             
             <div class="btnContainer">
                 <div class="btnRow">
-                    <button class="btn">7</button>
-                    <button class="btn">8</button>
-                    <button class="btn">9</button>
-                    <button class="btn"><i class="fa-solid fa-divide"></i></button>
+                    <button class="btn" id="sevenBtn">7</button>
+                    <button class="btn" id="eightBtn">8</button>
+                    <button class="btn" id="nineBtn">9</button>
+                    <button class="btn" id="divideBtn"><i class="fa-solid fa-divide"></i></button>
                 </div>
                 <div class="btnRow">
-                    <button class="btn">4</button>
-                    <button class="btn">5</button>
-                    <button class="btn">6</button>
-                    <button class="btn"><i class="fa-solid fa-xmark"></i></button>
+                    <button class="btn" id="fourBtn">4</button>
+                    <button class="btn" id="fiveBtn">5</button>
+                    <button class="btn" id="sixBtn">6</button>
+                    <button class="btn" id="timesBtn"><i class="fa-solid fa-xmark"></i></button>
                 </div>
                 <div class="btnRow">
-                    <button class="btn">1</button>
-                    <button class="btn">2</button>
-                    <button class="btn">3</button>
-                    <button class="btn"><i class="fa-solid fa-minus"></i></button>
+                    <button class="btn" id="oneBtn">1</button>
+                    <button class="btn" id="twoBtn">2</button>
+                    <button class="btn" id="threeBtn">3</button>
+                    <button class="btn" id="minusBtn"><i class="fa-solid fa-minus"></i></button>
                 </div>
                 <div class="btnRow">
-                    <button class="btn">.</button>
-                    <button class="btn">0</button>
-                    <button class="btn">=</button>
-                    <button class="btn">+</button>
+                    <button class="btn" id="dotBtn">.</button>
+                    <button class="btn" id="zeroBtn">0</button>
+                    <button class="btn" id="equalBtn">=</button>
+                    <button class="btn" id="plusBtn">+</button>
                 </div>
 
             </div>
         </div>
     </main>
+
+    <!-- Javascript Link -->
+    <script src="script.js"></script>
 </body>
 </html>

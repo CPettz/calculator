@@ -1,0 +1,116 @@
+// Default Variables
+let STARTING_VALUE = '0';
+
+// Operator Functions
+function add(num1, num2) {
+    return num1 + num2;
+}
+
+function subtract(num1, num2) {
+    return num1 - num2;
+}
+
+function multiply(num1, num2) {
+    return num1 * num2;
+}
+
+function divide(num1, num2) {
+    return num1 / num2;
+}
+
+function operate(num1, num2, operatorFunction) {
+    return operatorFunction(num1, num2);
+}
+
+// Initialize JS Variables from HTML Elements
+// Number Buttons
+let oneButton = document.getElementById('oneBtn');
+let twoButton = document.getElementById('twoBtn');
+let threeButton = document.getElementById('threeBtn');
+let fourButton = document.getElementById('fourBtn');
+let fiveButton = document.getElementById('fiveBtn');
+let sixButton = document.getElementById('sixBtn');
+let sevenButton = document.getElementById('sevenBtn');
+let eightButton = document.getElementById('eightBtn');
+let nineButton = document.getElementById('nineBtn');
+let zeroButton = document.getElementById('zeroBtn');
+
+// Other Buttons
+let divideButton = document.getElementById('divideBtn');
+let timesButton = document.getElementById('timesBtn');
+let minusButton = document.getElementById('minusBtn');
+let plusButton = document.getElementById('plusBtn');
+let equalButton = document.getElementById('equalBtn');
+let dotButton = document.getElementById('dotBtn');
+
+// Display and Clear Reference
+let clearButton = document.getElementById('clearBtnId');
+let deleteButton = document.getElementById('deleteBtnId');
+
+// Display Reference
+let display = document.getElementById('displayContentId')
+
+// Function that updates the display content with a given value
+function updateDisplay(num) {
+    if(display.textContent.length > 14) {
+        return;
+    } else {
+        if (display.textContent == '0') {
+            display.textContent = num;
+        }
+        else {
+            let displayString = display.textContent.toString();
+            let newNumberString = num.toString();
+            let finalNumber = displayString + newNumberString;
+            display.textContent = finalNumber;
+        }
+    }
+}
+
+// We need a distinct function to update the '.' because there can
+// only be one of this charType in a calculator. Example, a number cannot
+// be 12.34.5 etc.
+function updateDot() {
+    if (display.textContent.includes('.')) {
+        return;
+    } else {
+        display.textContent += '.';
+    } 
+}
+
+// Function that clears the display
+function clearDisplay() {
+    display.textContent = STARTING_VALUE;
+}
+
+// Function that deletes the most recent number
+function deleteDisplay() {
+    if (display.textContent.length == 1) {
+        display.textContent = '0';
+    } else {
+         display.textContent = display.textContent.slice(0, -1);
+    }
+}
+
+// We need to add the initial event listeners for the buttons
+oneButton.onclick = () => updateDisplay(1);
+twoButton.onclick = () => updateDisplay(2);
+threeButton.onclick = () => updateDisplay(3);
+fourButton.onclick = () => updateDisplay(4);
+fiveButton.onclick = () => updateDisplay(5);
+sixButton.onclick = () => updateDisplay(6);
+sevenButton.onclick = () => updateDisplay(7);
+eightButton.onclick = () => updateDisplay(8);
+nineButton.onclick = () => updateDisplay(9);
+zeroButton.onclick = () => updateDisplay(0);
+dotButton.onclick = () => updateDot();
+
+// Add functionality for the clear button
+clearButton.onclick = () => clearDisplay();
+
+// Add functionality for the delete button
+deleteButton.onclick = () => deleteDisplay();
+
+function displayEvent(event) {
+    console.log(event.target.id);
+}
