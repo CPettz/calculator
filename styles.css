@@ -1,0 +1,122 @@
+:root {
+--primary-dark: #333;
+--primary-light: #ededed;
+--secondary-light: #fefefe;
+}
+
+*,
+*::before,
+*::after {
+box-sizing: border-box;
+padding: 0;
+margin: 0;
+}
+
+html {
+/* footer support */
+position: relative;
+min-height: 100%;
+}
+
+body {
+background-color: var(--primary-light);
+color: var(--primary-dark);
+font-family: 'Roboto', sans-serif;
+line-height: 1.6;
+/* footer support */
+margin-bottom: 100px;
+}
+
+.header {
+    position: fixed;
+    top: 10px;
+    left: 10px;
+    color: var(--primary-dark);
+    font-weight: bold;
+}
+
+.main {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 200px 200px;
+}
+
+.calcBody {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background-color: grey;
+    /* height: 750px; */
+    width: 350px;
+    border-radius: 8px;
+}
+
+.display {
+    height: 100px;
+    width: 90%;
+    background-color: white;
+    margin: 15px;
+    border-radius: 5px;
+    display: flex;
+    justify-content: flex-end;
+    align-items: flex-end;
+    font-size: 35px;
+}
+
+.displayContent {
+    margin-right: 10px;
+    /* margin-bottom: 5px; */
+}
+
+.clearDelete {
+    width: 90%;
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 15px;
+    gap: 10px;
+}
+
+.clearBtn,
+.deleteBtn {
+    width: 50%;
+    padding: 20px 0;
+    border-radius: 5px;
+    font-family: inherit;
+    font-weight: 900;
+    font-size: 20px;
+}
+
+.clearBtn {
+    background: red;
+    color: white;
+}
+
+.deleteBtn {
+    background-color: lightblue;
+}
+
+.btnContainer {
+    display: flex;
+    flex-direction: column;
+    width: 90%;
+    margin-bottom: 15px;
+}
+
+.btnRow {
+    display: flex;
+    justify-content: space-between;
+    margin: 5px 0;
+}
+
+.btn {
+    height: 75px;
+    width: 75px;
+    border-radius: 5px;
+    /* font-size: 25px; */
+}
+
+
+h1 {
+line-height: 1.2;
+}
