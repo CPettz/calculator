@@ -3,23 +3,31 @@ let STARTING_VALUE = '0';
 
 // Operator Functions
 function add(num1, num2) {
-    return num1 + num2;
+    return (num1 + num2);
 }
 
 function subtract(num1, num2) {
-    return num1 - num2;
+    return (num1 - num2);
 }
 
 function multiply(num1, num2) {
-    return num1 * num2;
+    return (num1 * num2);
 }
 
 function divide(num1, num2) {
-    return num1 / num2;
+    return (num1 / num2);
 }
 
 function operate(num1, num2, operatorFunction) {
-    return operatorFunction(num1, num2);
+    if (operatorFunction == 'divide') {
+        return divide(num1, num2);
+    } else if (operatorFunction == 'multiply') {
+        return multiply(num1, num2);
+    } else if (operatorFunction == 'minus') {
+        return subtract(num1, num2);
+    } else if (operatorFunction == 'plus') {
+        return add(num1, num2);
+    }
 }
 
 // Initialize JS Variables from HTML Elements
@@ -81,6 +89,9 @@ function updateDot() {
 // Function that clears the display
 function clearDisplay() {
     display.textContent = STARTING_VALUE;
+    firstNumber = 0;
+    secondNumber = 0;
+    operatorCounter = 0;
 }
 
 // Function that deletes the most recent number
@@ -111,6 +122,73 @@ clearButton.onclick = () => clearDisplay();
 // Add functionality for the delete button
 deleteButton.onclick = () => deleteDisplay();
 
-function displayEvent(event) {
-    console.log(event.target.id);
+// The next section is related to using the operate function to make the
+// calculator functional, with the information we can now capture
+
+// Initialize the pair of numbers
+let firstNumber = 0;
+let secondNumber = 0;
+let operatorCounter = 0;
+let operatorStatus = '';
+
+function checkOperatorType(operatorId) {
+    if (operatorId == 'divideBtn') {
+        return 'divide';
+    } else if (operatorId == 'timesBtn') {
+        return 'multiply';
+    } else if (operatorId == 'minusBtn') {
+        return 'minus';
+    } else {
+        return 'plus'
+    }
 }
+
+function clickOperator(operatorId) {
+    if(operatorCounter == 0) {
+        firstNumber = parseFloat(display.textContent);
+        display.textContent = 0;
+        operatorStatus = checkOperatorType(operatorId);
+    } 
+
+    // if(operatorCounter > 0) {
+    //     operatorStatus = checkOperatorType(operatorId);
+    //     secondNumber = parseFloat(display.textContent);
+    //     console.log("First Number " + firstNumber);
+    //     console.log("Second Number " + secondNumber);
+    //     console.log("Operator Status " + operatorStatus);
+    //     firstNumber = operate(firstNumber, secondNumber, operatorStatus);
+    //     console.log("newFirstNumber " + firstNumber);
+    //     display.textContent = 0;
+        
+    //     // secondNumber = parseFloat(display.textContent);
+    //     // firstNumber = operate(firstNumber, secondNumber, operatorStatus);
+    //     // operatorStatus = checkOperatorType(operatorId);
+    //     // display.textContent = firstNumber;
+    //     // operatorCounter++;
+    // }
+
+    operatorCounter++;
+}
+
+function clickEquals() {
+    secondNumber = parseFloat(display.textContent);
+    let finalResult = operate(firstNumber, secondNumber, operatorStatus);
+    if (finalResult.toString().length > 14) {
+        alert('Your response is too large!');
+        display.textContent = '0';
+        firstNumber = 0;
+        secondNumber = 0;
+    } else {
+        display.textContent = finalResult;
+    }
+
+    operatorCounter = 0;
+}
+
+// Activate the operator buttons
+divideButton.onclick = () => clickOperator(event.target.id);
+timesButton.onclick = () => clickOperator(event.target.id);
+plusButton.onclick = () => clickOperator(event.target.id);
+minusButton.onclick = () => clickOperator(event.target.id);
+equalButton.onclick = () => clickEquals();
+
